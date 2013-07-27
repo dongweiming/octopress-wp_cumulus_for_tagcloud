@@ -14,6 +14,9 @@ var json_data = (function () {
       // Set callback to run when API is loaded
       google.setOnLoadCallback(drawVisualization);
 
+
+      var colors=new Array('#FFFF00', '#FF34B3', '#FF00FF', '#54FF9F', '#0000EE', '#F08080', '#949494')
+      var n = Math.floor(Math.random() * colors.length + 1)-1;
     // Called when the Visualization API is loaded.
     function drawVisualization() {
 
@@ -37,6 +40,6 @@ var json_data = (function () {
         var vis = new gviz_word_cumulus.WordCumulus(document.getElementById('tag-cloud'));
 
         // Draw our table with the data we created locally.
-        vis.draw(data, {text_color: '#00ff00', speed: 50, width:220, height:220});
+        vis.draw(data, {text_color: colors[n], speed: 50, width:220, height:220});
        }
 

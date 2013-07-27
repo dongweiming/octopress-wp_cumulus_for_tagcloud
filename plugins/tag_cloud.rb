@@ -3,7 +3,6 @@
 # Tag Cloud for Octopress
 # =======================
 #
-#
 # Syntax:
 # -------
 # {% tag_cloud [counter:true] %}
@@ -31,6 +30,7 @@
 #
 # [MIT]: http://www.opensource.org/licenses/mit-license.php
 #
+require 'rubygems'
 require 'json'
 require 'pathname'
 
@@ -65,9 +65,10 @@ module Jekyll
         url = category_dir + category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
         nli[0] = category + '[' + categories[category].count.to_s + ']'
         nli[1] = url
-        if @config['category_counter']
+        if @opts['counter']
           nli[2] = categories[category].count
-        else nli[2] = 8
+        else
+          nli[2] = 8
         end
         li.push(nli)
       end
